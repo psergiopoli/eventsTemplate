@@ -1,9 +1,9 @@
-<div class="col-md-6 col-md-offset-3">
+<div>
     <h1>Home</h1>
-    <p>You're logged in with JWT!!</p>
+    <p>You're logged in Events Callendar :D</p>
     <div>
-        Users from secure api end point:
-        {{user?.email}}
-    </div>
+        User : {{user?.email}}
+    </div>    
+    <p><a [routerLink]="['/events']">Events</a></p>
     <p><a [routerLink]="['/login']">Logout</a></p>
 </div>

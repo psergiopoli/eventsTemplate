@@ -8,7 +8,7 @@ import { ListEventComponent } from './event/list.event.component';
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'event', component: ListEventComponent, canActivate: [AuthGuard] },
+    { path: 'events', component: ListEventComponent, canActivate: [AuthGuard] },
     { path: '**', redirectTo: '' }
 ];
 

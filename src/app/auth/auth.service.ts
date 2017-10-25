@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { URLSearchParams } from '@angular/http';
+import { URLSearchParams, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
@@ -41,9 +41,25 @@ export class AuthenticationService {
                 }
             });
     }
- 
+
     logout(): void {
         this.token = null;
         localStorage.removeItem('currentUser');
+    }
+
+    signup(username: string, password: string ): Observable<boolean> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let body = JSON.stringify({ 'email': username, 'password': password });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(apibaseurl+'/sign-in', body, options)
+            .map((response: Response) => {
+                if(response.status === 201){
+                    return true;
+                }else{
+                    return false;
+                }                
+            }).catch(e => {
+                return Observable.throw('Internal Error');
+            });
     }
 }
