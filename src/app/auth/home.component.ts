@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
  
-import { User } from './user';
 import { UserService } from './user.service';
  
 @Component({
@@ -14,8 +13,7 @@ export class HomeComponent implements OnInit {
     constructor(private userService: UserService) { }
  
     ngOnInit() {
-        // get users from secure api end point
-        this.userService.getUsers()
+        this.userService.getUser()
             .subscribe(user => {
                 this.user = user;
             });

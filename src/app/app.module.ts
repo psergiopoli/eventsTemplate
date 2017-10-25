@@ -14,12 +14,15 @@ import { AuthenticationService } from './auth/auth.service';
 import { UserService } from './auth/user.service';
 import { LoginComponent } from './auth/login.component';
 import { HomeComponent } from './auth/home.component';
+import { ListEventComponent } from './event/list.event.component';
+import { EventService } from './event/event.service';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
-        HomeComponent
+        HomeComponent,
+		ListEventComponent
 	],
 	exports: [
 		RouterModule
@@ -33,7 +36,8 @@ import { HomeComponent } from './auth/home.component';
 	providers: [
 		AuthGuard,
         AuthenticationService,
-        UserService
+        UserService,
+		EventService
 	],
 	bootstrap: [AppComponent]
 })

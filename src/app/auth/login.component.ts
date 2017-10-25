@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService) { }
  
     ngOnInit() {
-        // reset login status
         this.authenticationService.logout();
     }
  
@@ -26,14 +25,18 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(result => {
+                console.log("resultadinho:"+result);
                 if (result === true) {
-                    // login successful
                     this.router.navigate(['/']);
                 } else {
-                    // login failed
-                    this.error = 'Username or password is incorrect';
+                    this.error = 'Error';
                     this.loading = false;
                 }
-            });
+            },
+            error =>{
+                this.error = error;
+                this.loading = false;
+            }
+        );
     }
 }

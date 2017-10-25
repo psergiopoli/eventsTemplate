@@ -3,6 +3,11 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
+
+import { apibaseurl } from './../api.baseurl';
+
  
 @Injectable()
 export class AuthenticationService {
@@ -18,7 +23,7 @@ export class AuthenticationService {
         let authParams = new URLSearchParams();
         authParams.append('username', username);
         authParams.append('password', password);
-        return this.http.post('http://localhost:8080/login', authParams)
+        return this.http.post(apibaseurl+'/login', authParams)
             .map((response: Response) => {
                 let token = response.json() && response.json().token;
                 if (token) {
@@ -27,6 +32,12 @@ export class AuthenticationService {
                     return true;
                 } else {
                     return false;
+                }
+            }).catch(e => {
+                if (e.status === 401) {
+                    return Observable.throw('Login or password incorrect');
+                }else{
+                    return Observable.throw('Internal Error');
                 }
             });
     }

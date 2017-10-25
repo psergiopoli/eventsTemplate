@@ -1,0 +1,1 @@
+export const apibaseurl = 'http://localhost:8080';
