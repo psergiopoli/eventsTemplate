@@ -2,11 +2,14 @@
     {{ event[0].id }}  {{ event[0].description }} <br>
     {{ event[0].event_start }} {{ event[0].event_end }} 
     <div *ngIf="event[1]">
-        {{event[1].accepted}} ID {{event[1].id}}
+        {{event[1].accepted}} ID {{event[1].id}} <br>
         <button *ngIf="!(event[1].accepted)" (click)="accept(event[1]);">Confirmar presença</button>
         <button *ngIf="(event[1].accepted)"  (click)="unaccept(event[1]);">Desconfirmar presença</button>
         <div *ngIf="event[1].message">
             {{event[1].message}}
         </div>
+    </div>
+    <div *ngIf="!(event[1])">
+        <button>Enviar Convite</button>
     </div>
 </li>
