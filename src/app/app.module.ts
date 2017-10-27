@@ -16,13 +16,20 @@ import { LoginComponent } from './auth/login.component';
 import { HomeComponent } from './auth/home.component';
 import { ListEventComponent } from './event/list.event.component';
 import { EventService } from './event/event.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { GlobalEventsManager } from './global.eventmanager';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
         HomeComponent,
-		ListEventComponent
+		ListEventComponent,
+		NavbarComponent,
+		CreateEventComponent
 	],
 	exports: [
 		RouterModule
@@ -31,13 +38,16 @@ import { EventService } from './event/event.service';
 		BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+		routing,
+		DateTimePickerModule ,
+		BrowserAnimationsModule
 	],
 	providers: [
 		AuthGuard,
         AuthenticationService,
         UserService,
-		EventService
+		EventService,
+		GlobalEventsManager
 	],
 	bootstrap: [AppComponent]
 })

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
  
 @Component({
-    moduleId: module.id,
+    moduleId: 'app-menu',
     templateUrl: 'home.component.html'
 })
  

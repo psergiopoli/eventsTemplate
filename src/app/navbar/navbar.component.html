@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Calendar</a>
+  <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" [routerLink]="['/']">Home</a></li>
+          <li *ngIf="logged" class="nav-item"><a class="nav-link" [routerLink]="['/createEvent']">Create Event</a></li>
+          <li *ngIf="logged" class="nav-item"><a class="nav-link" [routerLink]="['/events']">Show Calendar</a></li>
+      </ul>
+      <span class="navbar-text">
+          <ul class="navbar-nav mr-auto">
+              <span class="navbar-text">
+                  {{user?.email}}
+              </span>
+              <li *ngIf="logged" class="nav-item"><a class="nav-link" [routerLink]="['/login']" (click)="logout();">Logout</a></li> 
+              <li *ngIf="!logged" class="nav-item"><a class="nav-link" [routerLink]="['/login']" >Login</a></li>            
+          </ul>
+      </span>
+  </div>
+  </nav>

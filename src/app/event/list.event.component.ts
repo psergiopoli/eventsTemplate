@@ -9,7 +9,7 @@ import { EventService } from './event.service';
 export class ListEventComponent implements OnInit {
    
     events;
-
+    
     constructor(private eventService: EventService) { }
 
     ngOnInit() {
@@ -18,5 +18,24 @@ export class ListEventComponent implements OnInit {
                 this.events = events;
             });
     }
+
+    accept(invite){
+        this.eventService.acceptInvitation(invite.id).subscribe(message => {
+            invite.message = message.message;
+            invite.accepted = true;
+        },error =>{
+            invite.message = error;
+        });
+    }
+
+    unaccept(invite){
+        this.eventService.unaceptInvitation(invite.id).subscribe(message => {
+            invite.message = message.message;
+            invite.accepted = false;
+        },error =>{
+            invite.message = error;
+        });        
+    }
+
 
 }

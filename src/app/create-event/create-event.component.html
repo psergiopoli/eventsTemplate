@@ -1,0 +1,28 @@
+<div>
+    <h2>New event</h2>
+    <form name="form" (ngSubmit)="f.form.valid && newEvent()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !description.valid }">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" name="description" [(ngModel)]="newEventModel.description" #description="ngModel" required />
+            <div *ngIf="f.submitted && !description.valid" class="help-block">Description is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !event_start.valid }">
+            <label for="event_start">Event Start</label>
+            <owl-date-time name="event_start" [(ngModel)]="newEventModel.event_start" #event_start="ngModel" 
+            dateFormat="DD/MM/YYYY HH:mm:ss" [locale]="br" placeHolder="DD/MM/YYYY HH:MM:SS" showSecondsTimer="true" dataType="string" required="true"></owl-date-time>
+            <div *ngIf="f.submitted && !event_start.valid" class="help-block">Event start is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !event_end.valid }">
+            <label for="event_end">Event end</label>
+            <owl-date-time name="event_end" [(ngModel)]="newEventModel.event_end" #event_end="ngModel"
+            dateFormat="DD/MM/YYYY HH:mm:ss" [locale]="br" placeHolder="DD/MM/YYYY HH:MM:SS" showSecondsTimer="true" dataType="string" required="true"></owl-date-time>
+            <div *ngIf="f.submitted && !event_end.valid" class="help-block">Event end is required</div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loadingSignup" class="btn btn-primary">Create</button>
+            <img *ngIf="loadingSignup" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </div>
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        <div *ngIf="message" class="alert alert-success">{{message}}</div>
+    </form>
+</div>
