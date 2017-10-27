@@ -21,6 +21,12 @@ export class EventService {
         return this.http.get(apibaseurl+'/event/all?page='+this.actualPage+'&size=100', options).map((response: Response) => response.json());
     }
 
+    getEventById(id) {
+        let headers = new Headers({ 'Authorization': this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.get(apibaseurl+'/event/'+id, options).map((response: Response) => response.json());
+    }
+
     createEvent(event){
         let headers = new Headers({ 'Authorization': this.authenticationService.token });
         headers.append('Content-Type', 'application/json');
@@ -45,7 +51,7 @@ export class EventService {
 
     acceptInvitation(id){
         let headers = new Headers({ 'Authorization': this.authenticationService.token });
-        let options = new RequestOptions({headers: headers, url : apibaseurl+'/invite/'+id,method: RequestMethod.Put });
+        let options = new RequestOptions({headers: headers, url : apibaseurl+'/invite/'+id,method: RequestMethod.Patch });
         return this.http.request(new Request(options)).map((response: Response) => {
             return response.json();
         }).catch(e => {

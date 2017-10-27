@@ -21,6 +21,8 @@ import { GlobalEventsManager } from './global.eventmanager';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InviteComponent } from './invite/invite.component';
+import { InviteService } from './invite/invite.service';
 
 @NgModule({
 	declarations: [
@@ -29,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         HomeComponent,
 		ListEventComponent,
 		NavbarComponent,
-		CreateEventComponent
+		CreateEventComponent,
+		InviteComponent
 	],
 	exports: [
 		RouterModule
@@ -47,6 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         AuthenticationService,
         UserService,
 		EventService,
+		InviteService,
 		GlobalEventsManager
 	],
 	bootstrap: [AppComponent]
