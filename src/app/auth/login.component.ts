@@ -19,11 +19,18 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService) { }
  
+    clearMessages(){
+        this.error = '';
+        this.message = '';
+        this.loading = false;
+    }
     ngOnInit() {
+        this.clearMessages();
         this.authenticationService.logout();
     }
  
     login() {
+        this.clearMessages();
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(result => {
@@ -42,18 +49,19 @@ export class LoginComponent implements OnInit {
     }
 
     signup() {
+        this.clearMessages();
         this.loadingSignup = true;
         this.authenticationService.signup(this.model.username, this.model.password)
             .subscribe(result => {
                 if (result === true) {
                     this.message = "Success signup on plataform!"
                 } else {
-                    this.message = 'Error on creating user.';                    
+                    this.error = 'Error on creating user.';                    
                 }
                 this.loadingSignup = false;
             },
             error =>{
-                this.message = error;
+                this.error = error;
                 this.loadingSignup = false;
             }
         );

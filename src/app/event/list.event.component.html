@@ -1,15 +1,16 @@
-<li *ngFor="let event of events?.content; let i = index"> 
-    {{ event[0].id }}  {{ event[0].description }} <br>
-    {{ event[0].event_start }} {{ event[0].event_end }} 
-    <div *ngIf="event[1]">
-        {{event[1].accepted}} ID {{event[1].id}} <br>
-        <button *ngIf="!(event[1].accepted)" (click)="accept(event[1]);">Confirm</button>
-        <button *ngIf="(event[1].accepted)"  (click)="unaccept(event[1]);">Disconfirm</button>
-        <div *ngIf="event[1].message">
-            {{event[1].message}}
+<li *ngFor="let event of events; let i = index"> 
+    ID: {{ event.id }}  {{ event.description }} <br>
+    {{ event.event_start }} {{ event.event_end }} 
+    teste {{event?.whoInvited?.id!=event?.creator.id}}
+    <div *ngIf="event.invitedEvent">
+        {{event.accepted}} ID {{event.id}} <br>
+        <button *ngIf="!(event.accepted)" (click)="accept(event);">Confirm</button>
+        <button *ngIf="(event.accepted)"  (click)="unaccept(event);">Disconfirm</button>
+        <div *ngIf="event.message">
+            {{event.message}}
         </div>
     </div>
-    <div *ngIf="!(event[1])">
-            <a class="nav-link" [routerLink]="['/invite/'+event[0].id]">Send invite</a>
+    <div *ngIf="!(event.invitedEvent)">
+            <a class="nav-link" [routerLink]="['/invite/'+event.id]">Send invite</a>
     </div>
 </li>
