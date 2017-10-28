@@ -2,9 +2,8 @@
   <a class="navbar-brand" href="#">Calendar</a>
   <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/']">Home</a></li>
-          <li *ngIf="logged" class="nav-item"><a class="nav-link" [routerLink]="['/createEvent']">Create Event</a></li>
-          <li *ngIf="logged" class="nav-item"><a class="nav-link" [routerLink]="['/events']">Show Calendar</a></li>
+          <li class="nav-item"><a class="nav-link" [routerLink]="['/']">My calendar</a></li>
+          <li *ngIf="logged" class="nav-item"><a class="nav-link" [routerLink]="['/createEvent']">Create event</a></li>
       </ul>
       <span class="navbar-text">
           <ul class="navbar-nav mr-auto">

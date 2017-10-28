@@ -3,7 +3,8 @@ import { EventService } from './event.service';
 
 @Component({
    moduleId: module.id,
-   templateUrl: 'list.event.component.html'
+   templateUrl: 'list.event.component.html',
+   styleUrls: ['./list.event.component.css']
 })
 
 export class ListEventComponent implements OnInit {
@@ -16,25 +17,24 @@ export class ListEventComponent implements OnInit {
         this.eventService.getEvents()
             .subscribe(events => {
                 this.events = events;
-                console.log(events);
             });
     }
 
-    accept(invite){
-        this.eventService.acceptInvitation(invite.id).subscribe(message => {
-            invite.message = message.message;
-            invite.accepted = true;
+    accept(event){
+        this.eventService.acceptInvitation(event.invite).subscribe(message => {
+            event.message = message.message;
+            event.accepted = true;
         },error =>{
-            invite.message = error;
+            event.message = error;
         });
     }
 
-    unaccept(invite){
-        this.eventService.unaceptInvitation(invite.id).subscribe(message => {
-            invite.message = message.message;
-            invite.accepted = false;
+    unaccept(event){
+        this.eventService.unaceptInvitation(event.invite).subscribe(message => {
+            event.message = message.message;
+            event.accepted = false;
         },error =>{
-            invite.message = error;
+            event.message = error;
         });        
     }
 

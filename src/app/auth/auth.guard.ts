@@ -13,7 +13,6 @@ export class AuthGuard implements CanActivate {
             return true;
         }       
         
-        console.log('deslogando');
         this.router.navigate(['/login']);
         this.globalEventsManager.hideNavBar.emit(true);
         return false;
