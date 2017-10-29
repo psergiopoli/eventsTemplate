@@ -23,7 +23,7 @@ export class ListEventComponent implements OnInit {
     accept(event){
         this.eventService.acceptInvitation(event.invite).subscribe(message => {
             event.message = message.message;
-            event.accepted = true;
+            event.invitedEventAccepted = true;
         },error =>{
             event.message = error;
         });
@@ -32,7 +32,7 @@ export class ListEventComponent implements OnInit {
     unaccept(event){
         this.eventService.unaceptInvitation(event.invite).subscribe(message => {
             event.message = message.message;
-            event.accepted = false;
+            event.invitedEventAccepted = false;
         },error =>{
             event.message = error;
         });        

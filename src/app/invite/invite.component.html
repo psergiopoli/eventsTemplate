@@ -1,3 +1,32 @@
-<p>
-  {{event?.id}}
-</p>
+<div class="row">
+  <div class="d-block mx-auto">
+  <h4> Description : {{event?.description}} </h4>
+  <h4> Start : {{event?.event_start}} </h4>
+  <h4> End : {{event?.event_end}} </h4>
+  </div>
+</div>
+<div class="row">
+  <hr>
+</div>
+<div class="row">
+  <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+    <h2 class="text-primary">Invites to send</h2>
+    <div *ngFor="let user of notInvite; let i = index">
+      {{user.email}} <a class="btn btn-primary btn-sm" (click)="sendInvite(user.id);">invite</a>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+    <h2 class="text-warning">Invitations waiting</h2>
+    <div *ngFor="let user of invited; let i = index">
+      {{user.email}} <a class="btn btn-danger btn-sm" (click)="cancelInvite(user.id);">disinvite</a>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+    <h2 class="text-success">Invitations confirmed</h2>
+    <div *ngFor="let user of confirmed; let i = index">
+      {{user.email}} <a class="btn btn-danger btn-sm" (click)="cancelInvite(user.id);">disinvite</a>
+    </div>
+  </div>
+</div>

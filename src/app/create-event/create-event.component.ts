@@ -75,7 +75,7 @@ export class CreateEventComponent implements OnInit {
     parts_event_end[2] = parts_event_end[5][0];
     parts_event_end[6] = parts_event_end[5][1].split(':');
     parts_event_end[3] = parts_event_end[6][0];
-    parts_event_end[4] = parts_event_end[6][1];   
+    parts_event_end[4] = parts_event_end[6][1];
 
     this.event.event_start = parts_event_start[1]+"/"+parts_event_start[0]+"/"+parts_event_start[2]+" "+parts_event_start[3]+":"+parts_event_start[4];
     this.event.event_end = parts_event_end[1]+"/"+parts_event_end[0]+"/"+parts_event_end[2]+" "+parts_event_end[3]+":"+parts_event_end[4];

@@ -3,22 +3,22 @@
     <span>No scheduled events</span>
 </div>
 <div class="row">
-    <div *ngFor="let event of events; let i = index" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 card">         
+    <div *ngFor="let event of events; let i = index" class="col-lg-4 col-md-6 col-sm-6 col-xs-6 card">         
         Description: {{ event.description }} <br>
         Start :{{ event.event_start | date:'dd/MM/yyyy HH:mm'}} <br>
         End: {{ event.event_end | date:'dd/MM/yyyy HH:mm'}} <br>
         Creator: {{event.creator.name}} <br>
         ID : {{event.id}}
         <div *ngIf="event.invitedEvent">
-            <button *ngIf="!(event.accepted)" (click)="accept(event);" class="btn btn-success">Confirm</button>
-            <button *ngIf="(event.accepted)"  (click)="unaccept(event);"class="btn btn-danger" >Disconfirm</button>            
+            <button *ngIf="!(event.invitedEventAccepted)" (click)="accept(event);" class="btn btn-success">Confirm</button>
+            <button *ngIf="(event.invitedEventAccepted)"  (click)="unaccept(event);"class="btn btn-danger" >Disconfirm</button>            
             <div *ngIf="event.message" class="alert alert-info alert-dismissible">
                 {{event.message}}
             </div>
         </div>
         <div *ngIf="!(event.invitedEvent)">
             <a class="nav-link" [routerLink]="['/editEvent/'+event.id]" class="btn btn-secondary">Edit event</a>
-            <a class="nav-link" [routerLink]="['/invite/'+event.id]" class="btn btn-primary">Send invite</a>
+            <a class="nav-link" [routerLink]="['/invite/'+event.id]" class="btn btn-primary">Invites</a>
         </div>
     </div>
 </div>

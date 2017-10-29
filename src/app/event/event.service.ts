@@ -56,7 +56,7 @@ export class EventService {
             else{
                 return Observable.throw('Internal Error');
             }
-        });;
+        });
     }
 
     createEvent(event){
