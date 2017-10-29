@@ -48,20 +48,38 @@ export class InviteComponent implements OnInit {
 
   sendInvite(userId){
     this.inviteService.sendInvite(userId,this.event.id).subscribe(mode => {
-      this.globalMessageService.addMessage("Invite send with success","success",10);
+      this.globalMessageService.addMessage("Invite send with success.","success",6);
       let userToAdd;
-      this.notInvite.forEach(user =>{
+      this.notInvite.forEach((user,index) =>{
         if(user.id === userId){
-          userToAdd = user;
+          this.invited.push(user);
+          this.notInvite.splice(index,1);
         }
       });
     },error =>{ 
-      this.globalMessageService.addMessage(error,"danger",10);
+      this.globalMessageService.addMessage(error,"danger",6);
     });
   }
 
   cancelInvite(userId){
-    console.log(userId);
+    this.inviteService.cancelInvite(userId,this.event.id).subscribe(mode => {
+      this.globalMessageService.addMessage("You canceled the invitation successfully.","success",6);
+      let userToAdd;
+      this.invited.forEach((user,index) =>{
+        if(user.id === userId){
+          this.notInvite.push(user);
+          this.invited.splice(index,1);
+        }
+      });
+      this.confirmed.forEach((user,index) =>{
+        if(user.id === userId){
+          this.notInvite.push(user);
+          this.confirmed.splice(index,1);
+        }
+      });
+    },error =>{ 
+      this.globalMessageService.addMessage(error,"danger",6);
+    });
   }
   
 

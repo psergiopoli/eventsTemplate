@@ -19,14 +19,14 @@
   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
     <h2 class="text-warning">Invitations waiting</h2>
     <div *ngFor="let user of invited; let i = index">
-      {{user.email}} <a class="btn btn-danger btn-sm" (click)="cancelInvite(user.id);">disinvite</a>
+      {{user.email}} <a class="btn btn-danger btn-sm" (click)="cancelInvite(user.id);">uninvite</a>
     </div>
   </div>
 
   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
     <h2 class="text-success">Invitations confirmed</h2>
     <div *ngFor="let user of confirmed; let i = index">
-      {{user.email}} <a class="btn btn-danger btn-sm" (click)="cancelInvite(user.id);">disinvite</a>
+      {{user.email}} <a class="btn btn-danger btn-sm" (click)="cancelInvite(user.id);">uninvite</a>
     </div>
   </div>
 </div>

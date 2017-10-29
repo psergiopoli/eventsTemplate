@@ -8,7 +8,7 @@ import { GlobalEventsManager } from '../global.eventmanager';
 })
 export class GlobalMessageComponent implements OnInit {
 
-  message: any = {};
+  message = null;
 
   constructor(private globalEventsManager: GlobalEventsManager) { 
     this.addMessageWatcher();
@@ -28,6 +28,10 @@ export class GlobalMessageComponent implements OnInit {
         setTimeout(()=>{ this.message = null }, message.timeout*1000)
       }
     });
+  }
+
+  cleanMessages(){
+    this.message = null;
   }
 
   ngOnInit() {

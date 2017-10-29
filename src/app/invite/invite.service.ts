@@ -46,7 +46,17 @@ export class InviteService {
         });
     }
 
-    desinvite(userId,eventId){
-
+    cancelInvite(userId,eventId){
+        let headers = new Headers({ 'Authorization': this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers,method: RequestMethod.Delete });
+        return this.http.request(apibaseurl+'/invite/cancel?event='+eventId+'&user='+userId,options).map((response: Response) => {
+            if(response.status === 200){
+                return true;
+            }else{
+                return false;
+            }
+        }).catch(e => {
+            return Observable.throw('Internal error.');
+        });
     }
 }

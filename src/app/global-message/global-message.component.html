@@ -1,3 +1,4 @@
 <div *ngIf="message" class="{{message?.class}} alert-dismissible" role="alert">
-  {{message?.text}}  
+  {{message?.text}}
+  <a class="float-right" (click)="cleanMessages();">X</a>
 </div>
